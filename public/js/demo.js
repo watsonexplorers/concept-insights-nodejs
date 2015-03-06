@@ -22,8 +22,8 @@ $(document).ready(function() {
   var autocomplete;
 
   // Keyword search
-  var onKeywordChange = function() {
-    $('.suggestions').removeClass('active');
+  var onKeywordChange = function(e) {
+    $('.suggestions').removeClass('open');
     var query = $('.query').val().trim();
     if (query && query.length > 2) {
       label_search(query);
@@ -41,10 +41,11 @@ $(document).ready(function() {
       corpus:'ibmresearcher',
       user: 'public',
       query: keyword,
-      limit: 7
+      limit: 4
     }, function(results) {
       $('.errorMsg').hide();
-      $('.suggestions').addClass('active');
+      $('.suggestions').addClass('open');
+      $('.suggestions').trigger('click.bs.dropdown');
       populateDropdown(results);
     });
 
@@ -73,20 +74,20 @@ $(document).ready(function() {
 
   $('body').click(function(e) {
     if ($(e.target).closest('.suggestions').length === 0) {
-      $('.suggestions').removeClass('active');
+      $('.suggestions').removeClass('open');
     }
   });
 
   // click on dropdown item
   $(document).on('click', '.suggestions a', function() {
-    $('.suggestions').removeClass('active');
+    $('.suggestions').removeClass('open');
     var data = $(this).data();
 
     // Click on the no results
     if (!data.id)
       return;
 
-    var newTag = createTag(data.id, $(this).find('p').text());
+    var newTag = createTag(data.id, $(this).find('.concept-name').text());
     $('.tags-container').append(newTag);
     // apply load-in 100 ms from now
     setTimeout(function() {
@@ -158,9 +159,9 @@ $(document).ready(function() {
     getResults(getIdsFromTags(), loadResults);
   });
 
-  $(document).ajaxError(function(event, request) {
+  $(document).ajaxError(function(event, request, settings) {
     $('.loading').hide();
-    if (request.status == 500) {
+    if (request.status == 500 && settings.url !== '/feedback') {
       $('.errorMsg').show();
     }
   });
@@ -191,7 +192,7 @@ $(document).ready(function() {
       htmlString += '<ul class="expertise">';
       for (var j = 0; j < results[i].tags.length; j++) {
         var concept = results[i].tags[j].concept;
-        var name = concept.split('/').slice(4).join('/').replace(/_/g,' ');
+        var name = concept.split('/').slice(4).join('/').replace(/_/g,' ');;
         htmlString += '<li>';
         htmlString += '<a class="expertise-tag" href="javascript:void(0);" title="'+name+'" data-id="'+concept+'" data-name="'+name+'" >';
         htmlString += name;
@@ -247,10 +248,21 @@ $(document).ready(function() {
       htmlString += item.id;
       htmlString += '">';
       htmlString += '<li>';
-      htmlString += '<p>';
-      htmlString += '<p title="'+ item.label +'">';
+      htmlString += '<h4 class="concept-name" title="'+ item.label +'">';
       htmlString += item.label;
-      htmlString += '</p>';
+      htmlString += '</h4>';
+      htmlString += '<span class="concept-type '+ (item.type === 'concept' ? 'type-concept' : 'type-researcher')+'">';
+      if (item.type == '/public/ibmresearcher') {
+        htmlString += '(IBM Researcher)';
+      } else {
+        htmlString += '(' + item.type + ')';
+      }
+      htmlString += '</span>';
+      if (item.result != null) {
+        htmlString += '<p class="more-info" title="' + (item.result.abstract || item.label) + '">';
+        htmlString += item.result.abstract || item.label;
+        htmlString += '</p>';
+      }
       htmlString += '</li>';
       htmlString += '</a>';
       return htmlString;

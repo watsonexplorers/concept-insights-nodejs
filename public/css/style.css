@@ -1,69 +1,3 @@
-.img-container img {
-  width: 100%;
-  height: auto;
-}
-
-.top-nav {
-  background-color: #404041;
-  padding-top: 15px;
-  padding-bottom: 15px;
-}
-.top-nav a {
-  font-size: 14px;
-  font-weight: 300;
-  text-decoration: underline;
-  color: white;
-}
-.top-nav a:hover {
-  color: #E0E0E0;
-}
-
-.top-nav .right {
-  float: right;
-  margin-right: 20px;
-}
-.top-nav .left {
-  float: left;
-}
-.top-nav .fork:before {
-  content: " ";
-  background: url("../images/fork-icon.svg") no-repeat;
-  height: 16px;
-  width: 16px;
-  vertical-align: text-bottom;
-  display: inline-block;
-  margin-right: 3px;
-}
-.header {
-  padding-bottom:0px;
-  margin-bottom: 0px;
-}
-.header h2 {
-  font-weight: 400;
-}
-.header h3 {
-  color: #00b2ef;
-  font-weight: 400;
-}
-.avatar {
-  padding-right: 0px;
-}
-.avatar img {
-  margin-top: 9px;
-}
-.header a {
-  font-size: 14px;
-  font-weight: 300;
-  text-decoration: underline;
-  color: #404041;
-  display: block;
-  margin-left: 20px;
-  margin-bottom: 3px;
-}
-.header a:hover {
-  color: #777677;
-}
-
 .logo {
 	float: left;
 	margin-left: 25px;
@@ -79,8 +13,6 @@
 	color: #FF5050;
 }
 
-
-
 /*
 Z-Indexes
 */
@@ -91,7 +23,7 @@ Z-Indexes
 .input-container {
   position: relative;
 }
-+.input-container input {
+.input-container input {
   box-shadow: none;
 }
 .tags-container {
@@ -142,7 +74,7 @@ Z-Indexes
 .dropdown {
   border: 1px solid #bbb;
   width: 100%;
-  max-width: 300px;
+  max-width: 440px;
 }
 .dropdown ul {
   padding: 0px;
@@ -150,19 +82,40 @@ Z-Indexes
 }
 .dropdown li {
   list-style: none;
-  padding: 3px 12px;
+  padding: 6px 12px;
 }
-.dropdown p {
+.dropdown .concept-name, .dropdown .more-info {
   margin: 0px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+.dropdown .concept-name, .dropdown .concept-type {
+  display: inline-block;
+  vertical-align: middle;
+}
+.dropdown .concept-name {
+  float: left;
+  max-width: 290px;
+}
+.dropdown .concept-type {
+  float: right;
+}
+.dropdown .type-concept {
+  color: #00b2ef;
+}
+.dropdown .type-researcher {
+  color: #FF7832;
+}
+.dropdown .more-info {
   width: 100%;
+  padding-left: 10px;
+  font-style: italic;
 }
 
 /* specific styles for the dropdown list when you type concepts */
 .suggestions {
-  background-color: #00b2ef;
+  background-color: #e8e8e8;
   border: none;
   border-radius: 4px;
   position: absolute;
@@ -183,16 +136,21 @@ Z-Indexes
   left: 20px;
   margin-top: -16px;
   border: 8px solid transparent;
-  border-bottom: 8px solid #00b2ef;
+  border-bottom: 8px solid #e8e8e8;
+}
+.suggestions ul {
+  border-radius: 4px;
+  overflow: hidden;
 }
 .suggestions a {
-  color: white;
+  color: #565656;
   text-decoration: none;
 }
+.suggestions a:focus li,
 .suggestions a:hover li {
-  background-color: rgba(255, 255, 255, .3);
+  background-color: rgba(0, 178, 239, 0.38);
 }
-.suggestions.active {
+.suggestions.open {
   visibility: visible;
   opacity: 1;
 }
@@ -231,6 +189,9 @@ Z-Indexes
   background-color: rgba(225, 148, 148, .3);
   background-color: #FF5050;
   cursor: default;
+}
+.suggestions.noresult .concept-name {
+  color: white;
 }
 
 .wikipedia-article {

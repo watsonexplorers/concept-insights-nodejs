@@ -10,9 +10,9 @@ block row-content
       div.tags-container
       div.input-container
         input.form-control.query(name='query',
-          placeholder=' Try \'DevOps\' or \'Quantum Physics\'',
+          placeholder=" Try 'DevOps' or 'Quantum Physics'",
           required='true', value='', autocomplete='off', data-provide='typeahead')
-        div.suggestions.dropdown
+        div.suggestions.dropdown(data-toggle='dropdown')
           ul
     div.col-lg-12.col-xs-12
       h2 Results

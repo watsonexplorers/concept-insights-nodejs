@@ -19,7 +19,7 @@
 var express = require('express'),
   app = express(),
   bluemix = require('./config/bluemix'),
-  ConceptInsights = require('./concept-insights'),
+  watson = require('watson-developer-cloud'),
   extend = require('util')._extend;
 
 // Bootstrap application settings
@@ -27,31 +27,45 @@ require('./config/express')(app);
 
 // if bluemix credentials exists, then override local
 var credentials = extend({
-  url: '<url>',
-  username: '<username>',
-  password: '<password>'
+  version: 'v1',
+  username: '30ac56d5-0f6e-43dc-9282-411972b2e11f',
+  password: 'N89HZL78X8M5'
 }, bluemix.getServiceCreds('concept_insights')); // VCAP_SERVICES
 
 // Create the service wrapper
-var conceptInsights = new ConceptInsights(credentials);
+var conceptInsights = watson.concept_insights(credentials);
 
 app.get('/', function(req, res){
     res.render('index');
 });
 
 app.get('/label_search', function (req, res) {
-  conceptInsights.label_search(req.query, function(error, result) {
+  var payload = extend({
+    func:'labelSearch',
+    limit: 4,
+    prefix:true,
+    concepts:true,
+  }, req.query);
+
+  conceptInsights.labelSearch(payload, function(error, result) {
     if (error)
-      return res.status(error.error.code || 500).json(error);
+      return res.status(error.error ? error.error.code || 500 : 500).json(error);
     else
       return res.json(result);
   });
 });
 
 app.get('/semantic_search', function (req, res) {
-  conceptInsights.semantic_search(req.query, function(error, result) {
+  var payload = extend({
+    func:'semanticSearch',
+  }, req.query);
+
+  // ids needs to be stringify
+  payload.ids = JSON.stringify(payload.ids);
+
+  conceptInsights.semanticSearch(payload, function(error, result) {
     if (error)
-      return res.status(error.error.code || 500).json(error);
+      return res.status(error.error ? error.error.code || 500 : 500).json(error);
     else
       return res.json(result);
   });
