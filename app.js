@@ -28,8 +28,8 @@ require('./config/express')(app);
 // if bluemix credentials exists, then override local
 var credentials = extend({
   version: 'v1',
-  username: '30ac56d5-0f6e-43dc-9282-411972b2e11f',
-  password: 'N89HZL78X8M5'
+  username: '<username>',
+  password: '<password>'
 }, bluemix.getServiceCreds('concept_insights')); // VCAP_SERVICES
 
 // Create the service wrapper
