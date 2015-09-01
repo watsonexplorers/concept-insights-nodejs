@@ -21,7 +21,7 @@
  * username, password and url
  * for the first service that stars with 'name' or {} otherwise
  * @param  String name, service name
- * @return [Object] the service credentials or {} if
+ * @return {Object} the service credentials or {} if
  * name is not found in VCAP_SERVICES
  */
 module.exports.getServiceCreds = function(name) {

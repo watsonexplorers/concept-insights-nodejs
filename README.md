@@ -1,4 +1,4 @@
-# Concept Insights Nodejs Starter Application
+# Concept Insights Nodejs
 
   The IBM Watson [Concept Insights][service_url] service links documents that you provide with a pre-existing graph of concepts based on Wikipedia (e.g. 'Solar Energy', 'Cognitive Systems', etc.). Two types of links are identified: explicit links when a document directly mentions a concept, and implicit links which connect your documents to relevant concepts that are not directly mentioned in them. Users of this service can also search for documents that are relevant to a concept or collection of concepts by exploring the explicit and implicit links.
 
@@ -33,7 +33,7 @@ Give it a try! Click the button below to fork into IBM DevOps Services and deplo
 
 5. Create the Concept Insights service in Bluemix
   ```sh
-  $ cf create-service concept_insights free concept-insights-service
+  $ cf create-service concept_insights standard concept-insights-service
   ```
 
 6. Push it live!
@@ -41,7 +41,6 @@ Give it a try! Click the button below to fork into IBM DevOps Services and deplo
   $ cf push
   ```
 
-See the full [Getting Started][getting_started] documentation for more details, including code snippets and references.
 
 ## Running locally
   The application uses [Node.js](http://nodejs.org/) and [npm](https://www.npmjs.com/) so you will have to download and install them as part of the steps below.
@@ -64,7 +63,7 @@ See the full [Getting Started][getting_started] documentation for more details, 
           },
         "label": "concept_insights",
         "name": "concept-insights-service",
-        "plan": "free"
+        "plan": "standard"
      }]
     }
     }
@@ -100,5 +99,4 @@ To troubleshoot your Bluemix app the main useful source of information are the l
 
 [service_url]: http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/concept-insights.html
 [cloud_foundry]: https://github.com/cloudfoundry/cli
-[getting_started]: http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/getting_started/
 [sign_up]: https://apps.admin.ibmcloud.com/manage/trial/bluemix.html?cm_mmc=WatsonDeveloperCloud-_-LandingSiteGetStarted-_-x-_-CreateAnAccountOnBluemixCLI

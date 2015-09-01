@@ -1,12 +1,13 @@
----
 declared-services:
   concept-insights-service:
     label: concept_insights
-    plan: free
+    plan: standard
 applications:
 - services:
   - concept-insights-service
-  name: concept-insights-nodejs
+  name: concept-insights-demo
   command: node app.js
   path: .
-  memory: 128M
+  memory: 512M
+  env:
+    NODE_ENV: production
