@@ -119,6 +119,10 @@ $(document).ready(function() {
       $('#label-search-view-code-btn').removeAttr('disabled');
       $('#label-search-view-code-btn').prev().removeClass('icon-code-disabled');
 
+      if(results.matches.length == 0){
+        $('.tt-dataset').html('<div class="tt--search-hint"><i>no concepts found</i></div>');
+      }
+
       var filtered = {};
       filtered['matches'] = results.matches.filter(function(elem) {
         return elem.id.match(/^\/graphs/);
@@ -181,25 +185,8 @@ $(document).ready(function() {
   /**
    * Event handler for using sample text
    */
-  $('.tab-panels--example-link').click(function(){
-    return (this.tog = !this.tog) ? show_first_example_text() : show_second_example_text();
-  });
-
-});
-
-function show_first_example_text() {
-  $.ajax({
-        url : '../data/sotu.txt',
-        dataType: "text",
-        success : function (data) {
-            $("#body-of-text").text(data);
-            getAbstractConcepts();
-        }
-    });
-}
-
-function show_second_example_text() {
-  $.ajax({
+  $('#sample-1').click(function(){
+    $.ajax({
         url : '../data/declaration.txt',
         dataType: "text",
         success : function (data) {
@@ -207,7 +194,22 @@ function show_second_example_text() {
             getAbstractConcepts();
         }
     });
-}
+  });
+
+  $('#sample-2').click(function(){
+    $.ajax({
+        url : '../data/emmewatson.txt',
+        dataType: "text",
+        success : function (data) {
+            $("#body-of-text").text(data);
+            getAbstractConcepts();
+        }
+    });
+  });
+
+
+
+});
 
 function show_label_search_response() {
   $('#concepts-panel-API').toggleClass('active');
@@ -332,7 +334,6 @@ function getAbstractConcepts() {
 
             $('#TED-panel-API-data').empty();
             $('#TED-panel-API-data').html(JSON.stringify(results, null, 2));
-
 
             $('#TED-panel-list').empty();
             for (var i = 0; i < results.results.length; i++)
