@@ -41,6 +41,7 @@ var corpus_id = process.env.CORPUS_ID || '/corpora/public/TEDTalks';
 var graph_id  = process.env.GRAPH_ID ||  '/graphs/wikipedia/en-20120601';
 
 // Create the service wrapper
+credentials.jar = true;
 var conceptInsights = watson.concept_insights(credentials);
 
 app.get('/api/labelSearch', function(req, res, next) {

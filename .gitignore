@@ -10,3 +10,4 @@ public/minjs/*
 public/minjs/dist.js
 !public/minjs/README.md
 public/index.html
+concept-insights-nodejs/
