@@ -4,8 +4,8 @@ declared-services:
     plan: standard
 applications:
 - services:
-  - concept-insights-service
-  name: concept-insights-ted-demo
+  - concept-insights-standard
+  name: concept-insights-nodejs
   command: node app.js
   path: .
   memory: 1024M
