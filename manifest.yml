@@ -1,5 +1,5 @@
 declared-services:
-  concept-insights-service:
+  concept-insights-standard:
     label: concept_insights
     plan: standard
 applications:
