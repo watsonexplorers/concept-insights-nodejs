@@ -1,0 +1,8 @@
+HTTP/1.1 401 Unauthorized
+Content-Type: text/html
+X-DP-Watson-Tran-ID: csf_platform_prod_dp01-1575188709
+WWW-Authenticate: Basic realm="IBM Watson Gateway Log-in"
+X-Backside-Transport: FAIL FAIL
+Connection: close
+
+<HTML><HEAD><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"><TITLE>Watson Error</TITLE></HEAD><BODY><HR><p>Invalid access to resource - /concept-insights/api/v1/corpus/1f25efc1-0bb8-41ce-a459-1f2b0bcf8241/patricktest</p><p>User access not Authorized.</p><p>Gateway Error Code : ERCD04-NOAUTHHDR-PLTFRMREQ</p><p>Unable to communicate with Watson.</p><p>Request URL : /concept-insights/api/v1/corpus/1f25efc1-0bb8-41ce-a459-1f2b0bcf8241/patricktest</p><p>Error Id :  csf_platform_prod_dp01-1575188709</p><p>Date-Time : 2015-09-23T22:56:41-05:00</p></BODY></HTML>

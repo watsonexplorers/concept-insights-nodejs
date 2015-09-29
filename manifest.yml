@@ -4,8 +4,9 @@ declared-services:
     plan: standard
 applications:
 - services:
-  - concept-insights-standard
-  name: concept-insights-nodejs
+  - CI
+  name: ci-fitness
+  domain: watsontiger.mybluemix.net
   command: node app.js
   path: .
   memory: 1024M

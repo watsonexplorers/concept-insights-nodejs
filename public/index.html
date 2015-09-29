@@ -16,18 +16,6 @@
 			<span class="wordmark--right">Watson Developer Cloud</span>
 		</a>
 		<nav class="heading-nav">
-			<a class="heading-nav--item" href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/services-catalog.html">
-				Services
-			</a>
-			<a class="heading-nav--item" href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/">
-				Docs
-			</a>
-			<a class="heading-nav--item" href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/gallery.html">
-				App Gallery
-			</a>
-			<a class="heading-nav--item" href="https://developer.ibm.com/watson/">
-				Community
-			</a>
 		</nav>
 	</div>
 </header>
@@ -35,33 +23,13 @@
   <div class="_demo--banner">
 	<div class="_demo--container">
 		<div class="banner--service-icon-container">
-			<img class="banner--service-icon" src="images/icons/piazza.svg" alt="Concept Insight Service Demo Icon">
 		</div>
 		<div class="banner--service-info">
-			<h1 class="banner--service-title base--h1">
-				<img class="banner--service-icon_INLINE" src="images/icons/piazza.svg" alt="Concept Insight Service Demo Icon">
-				Concept Insights
+			<h1 class="banner--service-title base--h4">
+				Concept Insights DEMO by Watson Explorers of Fort Collins
 			</h1>
 			<div class="banner--service-description">
 				Concept Insights allows you to discover content which may or may not be found using a traditional keyword search.
-			</div>
-			<div class="banner--service-resource">
-				<span class="icon icon-link"></span>
-				<strong>Resources:</strong>
-			</div>
-			<div class="banner--service-links">
-				<li class="base--li banner--service-link-item">
-					<a href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/apis/#!/concept-insights" class="base--a" target="new">API Overview</a>
-				</li>
-				<li class="base--li banner--service-link-item">
-					<a href="http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/doc/concept-insights/" class="base--a" target="new">Documentation</a>
-				</li>
-				<li class="base--li banner--service-link-item">
-					<a href="https://bluemix.net/deploy?repository=https://github.com/watson-developer-cloud/concept-insights-nodejs.git" class="base--a" target="new">Fork and Deploy on Bluemix</a>
-				</li>
-				<li class="base--li banner--service-link-item">
-					<a href="https://github.com/watson-developer-cloud/concept-insights-nodejs" class="base--a" target="new">Fork on Github</a>
-				</li>
 			</div>
 		</div>
 	</div>
@@ -72,8 +40,8 @@
 				Try the service
 			</h2>
 		<p class="base--p _content--description">
-		  This service uses a pre-existing graph of concepts (based on Wikipedia) to surface the concepts in your input. It will use these concepts to recommend relevant content from the corpus you ingest.
-		  For this demo, discover <a class="base--a" href="https://www.ted.com/talks" target="blank">TED talks</a> using topics, words, or concepts. Or, paste in some text and we'll identify the concepts for you.
+		  This service uses a pre-existing <b>graph</b> (a fancy database) of <b>concepts</b> (based on English Wikipedia) to <b>surface</b> (to link or match) the concepts in your input. It will use these concepts to recommend relevant content from the <b>corpus</b> we ingested (the documents we uploaded to Watson).
+		  For this demo, we've uploaded a few documents related to Health and Fitness. The output comes from those documents, Wikipedia, and the concepts you input below.
 
 		</p>
 		<div class="_content--input">
@@ -181,7 +149,7 @@
 			</h3>
 
 			<p class="base--p _content--output-des">
-				TED talks may have explicit concept matches from your input. However, they also have implicit matches, with a single related concept or a collection of concepts. You may be surprised at what you would miss using a traditional keyword search. 
+				Our corpus may have explicit concept matches from your input. However, they also have implicit matches, with a single related concept or a collection of concepts. You may be surprised at what you would miss using a traditional keyword search. 
 			</p>
 
 			<div class="_content--concept-legend">
@@ -193,13 +161,16 @@
 				<div class="concept--derived-concept-legend">
 				</div>
 				<span class="concept--derived-concept-label">
-					TED talk concepts
+					Health and Fitness concepts
 				</span>
 			</div>
 
 			<div id="TED-panel-list">
 
 			</div>
+			<p class="base--p _content--output-des">
+            If nothing displays, it means there are no relevant concept matches between Wikipedia, our Health and Fitness docs, and the concepts you entered
+			</p>
 
 			<div class="input--ted-endpoint">
 				The service is using the 
