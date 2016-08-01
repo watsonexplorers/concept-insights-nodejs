@@ -32,8 +32,8 @@ app.use(favicon(__dirname + '/public/images/favicon.ico'));
 // if bluemix credentials exists, then override local
 var credentials = extend({
   url: 'https://gateway.watsonplatform.net/concept-insights/api',
-  username: '1f25efc1-0bb8-41ce-a459-1f2b0bcf8241',
-  password: 'NBjuOCfO4YA8',
+  username: '',
+  password: '',
   version: 'v2'
 }, bluemix.getServiceCreds('concept_insights')); // VCAP_SERVICES
 
